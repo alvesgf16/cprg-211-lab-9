@@ -1,10 +1,11 @@
-using Lab9;
+﻿using Lab9;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
         StudentManager studentManager = new();
+        CourseManager courseManager = new();
 
         List<Student> students = studentManager.GetAll();
         Console.WriteLine("Printing Students");
@@ -48,5 +49,47 @@ internal class Program
             Console.WriteLine("Student not found or invalid id");
         }
 
+        //adding courses
+        Console.WriteLine("\nAdding courses...");
+        List<Course> coursesToBeAdded = [
+            new Course()
+            {
+                CourseId = "1001",
+                Name = "Fundamentals of Web Development",
+                Credits = 3,
+            },
+            new Course()
+            {
+                CourseId = "1002",
+                Name = "Introduction to Full Stack Programming",
+                Credits = 3,
+            },
+            new Course()
+            {
+                CourseId = "1003",
+                Name = "Databases",
+                Credits = 3,
+            },
+            new Course()
+            {
+                CourseId = "1004",
+                Name = "Principles of Software Analysis and Design",
+                Credits = 4,
+            },
+            new Course()
+            {
+                CourseId = "1005",
+                Name = "Object-Oriented Programming",
+                Credits = 4,
+            }
+        ];
+        coursesToBeAdded.ForEach((course) => {
+            courseManager.Add(course);
+            Console.WriteLine($"Course {course.Name} added");
+        });
+
+        List<Course> courses = courseManager.GetAll();
+        Console.WriteLine("Printing Courses");
+        courses.ForEach(Console.WriteLine);
     }
 }
