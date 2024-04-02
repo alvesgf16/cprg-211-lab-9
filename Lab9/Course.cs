@@ -18,7 +18,7 @@ public class Course
 
     public Course() { }
 
-    public override string ToString() => $"Course ID: {CourseId}"
-                                         + $"Name: {Name}"
-                                         + $"Number of Credits: {Credits}";
+    public override string ToString() => $"Course ID: {CourseId}\t\t"
+                                         + $"Name: {Name}\t\t"
+                                         + $"Number of Credits: {Credits}\t\t";
 }
