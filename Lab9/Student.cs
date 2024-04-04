@@ -1,4 +1,4 @@
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 using SQLite;
 
@@ -18,7 +18,8 @@ public class Student
 
     public string Address { get; set; }
 
-    public Student() { }
+    [Ignore] // This attribute tells SQLite to ignore this property during database operations
+    public List<Course> Courses { get; set; } = [];
 
     public override string ToString() => $"Id: {Id, -2}\t\t" +
                                          $"Name: {Name, -18}\t\t" +
