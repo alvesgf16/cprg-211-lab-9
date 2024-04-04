@@ -1,4 +1,4 @@
-﻿using SQLite;
+using SQLite;
 
 namespace Lab9;
 
@@ -15,6 +15,8 @@ public class StudentManager
 
         //replace sql query to create a table for student class
         _database.CreateTable<Student>();
+
+        _database.CreateTable<StudentCourse>();
     }
 
     //add a student
