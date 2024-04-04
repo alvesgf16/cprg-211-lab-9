@@ -1,4 +1,4 @@
-﻿using Lab9;
+using Lab9;
 
 internal class Program
 {
@@ -22,6 +22,10 @@ internal class Program
         studentManager.Add(newStudent);
         Console.WriteLine("New student added");
 
+        students = studentManager.GetAll();
+        Console.WriteLine("Printing Students");
+        students.ForEach(Console.WriteLine);
+
         //updating a student
         Console.WriteLine("\n\nUpdating new Student...");
         Student studentToUpdate = students[9];
@@ -30,14 +34,22 @@ internal class Program
         studentManager.Update(studentToUpdate);
         Console.WriteLine("Student update completed");
 
+        students = studentManager.GetAll();
+        Console.WriteLine("Printing Students");
+        students.ForEach(Console.WriteLine);
+
         //deleting student
         Console.WriteLine("\n\nDeleting a student from db");
-        int studentToDelete = students[12].Id;
+        int studentToDelete = students[10].Id;
         studentManager.Delete(studentToDelete);
         Console.WriteLine("Deletion completed");
 
+        students = studentManager.GetAll();
+        Console.WriteLine("Printing Students");
+        students.ForEach(Console.WriteLine);
+
         //retrieving a student by id
-        Console.WriteLine("\n\nRetrieving a tudent by id from db.....");
+        Console.WriteLine("\n\nRetrieving a student by id from db.....");
         int studentToFetch = students[8].Id;
         Student? retrievedStudent = studentManager.GetById(studentToFetch);
         if (retrievedStudent is not null)
