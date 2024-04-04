@@ -6,16 +6,17 @@ internal class Program
 {
     private static void Main(string[] args)
     {
-        //reset database
+        // Resetting the database by dropping existing tables
         SQLiteConnection database = new(Constants.DatabasePath);
         database.DropTable<Student>();
         database.DropTable<Course>();
         database.DropTable<StudentCourse>();
 
+        // Recreating tables and instantiating managers
         StudentManager studentManager = new();
         CourseManager courseManager = new();
 
-        // initial state of database
+        // Initializing the database with a set of initial students
         List<Student> initialStudents =
         [
             new Student()
@@ -81,11 +82,12 @@ internal class Program
         ];
         initialStudents.ForEach(studentManager.Add);
 
+        // Retrieving and printing all students from the database
         List<Student> students = studentManager.GetAll();
         Console.WriteLine("Printing Students");
         students.ForEach(Console.WriteLine);
 
-        //adding a new student
+        // Adding a new student to the database
         Console.WriteLine("\nAdding a new student...");
         Student newStudent = new()
         {
@@ -100,7 +102,7 @@ internal class Program
         Console.WriteLine("Printing Students");
         students.ForEach(Console.WriteLine);
 
-        //updating a student
+        // Updating a student's information
         Console.WriteLine("\n\nUpdating new Student...");
         Student studentToUpdate = students[9];
         studentToUpdate.Email = "updatedemail@sait.ca";
@@ -112,7 +114,7 @@ internal class Program
         Console.WriteLine("Printing Students");
         students.ForEach(Console.WriteLine);
 
-        //deleting student
+        // Deleting a student from the database
         Console.WriteLine("\n\nDeleting a student from db");
         int studentToDelete = students[10].Id;
         studentManager.Delete(studentToDelete);
@@ -122,7 +124,7 @@ internal class Program
         Console.WriteLine("Printing Students");
         students.ForEach(Console.WriteLine);
 
-        //retrieving a student by id
+        // Retrieving a student by ID
         Console.WriteLine("\n\nRetrieving a student by id from db.....");
         int studentToFetch = students[8].Id;
         Student? retrievedStudent = studentManager.GetById(studentToFetch);
@@ -135,7 +137,7 @@ internal class Program
             Console.WriteLine("Student not found or invalid id");
         }
 
-        //adding courses
+        // Adding courses to the database
         Console.WriteLine("\nAdding courses...");
         List<Course> coursesToBeAdded = [
             new Course()
@@ -175,6 +177,7 @@ internal class Program
             Console.WriteLine($"Course {course.Name} added");
         });
 
+        // Retrieving and printing all courses from the database
         List<Course> courses = courseManager.GetAll();
         Console.WriteLine("\nPrinting Courses");
         courses.ForEach(Console.WriteLine);
