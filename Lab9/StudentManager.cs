@@ -1,4 +1,4 @@
-using SQLite;
+﻿using SQLite;
 
 namespace Lab9;
 
@@ -26,7 +26,7 @@ public class StudentManager
     public void Delete(int id) => _database.Delete<Student>(id);
 
     //getting all students in db
-    public List<Student> GetAll() => _database.Table<Student>().ToList();
+    public List<Student> GetAll() => [.. _database.Table<Student>()];
 
     //getting 1 student by id
     public Student? GetById(int id) => _database.Table<Student>().Where(student => student.Id == id).FirstOrDefault();

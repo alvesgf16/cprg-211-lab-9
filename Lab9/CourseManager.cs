@@ -1,4 +1,4 @@
-using SQLite;
+﻿using SQLite;
 
 namespace Lab9;
 
@@ -24,7 +24,7 @@ public class CourseManager
     public void Delete(string courseId) => _database.Delete<Course>(courseId);
 
     //getting all courses in db
-    public List<Course> GetAll() => _database.Table<Course>().ToList();
+    public List<Course> GetAll() => [.. _database.Table<Course>()];
 
     //getting 1 course by id
     public Course? GetById(string courseId) => _database.Table<Course>().Where(course => course.Id == courseId).FirstOrDefault();
