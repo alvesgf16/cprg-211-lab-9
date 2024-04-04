@@ -1,4 +1,4 @@
-﻿using SQLite;
+using SQLite;
 
 namespace Lab9;
 
@@ -27,7 +27,7 @@ public class CourseManager
     public List<Course> GetAll() => _database.Table<Course>().ToList();
 
     //getting 1 course by id
-    public Course? GetById(string courseId) => _database.Table<Course>().Where(course => course.CourseId == courseId).FirstOrDefault();
+    public Course? GetById(string courseId) => _database.Table<Course>().Where(course => course.Id == courseId).FirstOrDefault();
 
     //update a course
     public void Update(Course course) => _database.Update(course);

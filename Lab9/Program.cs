@@ -66,36 +66,37 @@ internal class Program
         List<Course> coursesToBeAdded = [
             new Course()
             {
-                CourseId = "1001",
+                Id = "1001",
                 Name = "Fundamentals of Web Development",
                 Credits = 3,
             },
             new Course()
             {
-                CourseId = "1002",
+                Id = "1002",
                 Name = "Introduction to Full Stack Programming",
                 Credits = 3,
             },
             new Course()
             {
-                CourseId = "1003",
+                Id = "1003",
                 Name = "Databases",
                 Credits = 3,
             },
             new Course()
             {
-                CourseId = "1004",
+                Id = "1004",
                 Name = "Principles of Software Analysis and Design",
                 Credits = 4,
             },
             new Course()
             {
-                CourseId = "1005",
+                Id = "1005",
                 Name = "Object-Oriented Programming",
                 Credits = 4,
             }
         ];
-        coursesToBeAdded.ForEach((course) => {
+        coursesToBeAdded.ForEach((course) =>
+        {
             courseManager.Add(course);
             Console.WriteLine($"Course {course.Name} added");
         });

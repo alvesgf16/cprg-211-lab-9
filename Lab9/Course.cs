@@ -8,7 +8,7 @@ public class Course
 {
     [Required]
     [PrimaryKey]
-    public string CourseId { get; set; }
+    public string Id { get; set; }
 
     [Required]
     public string Name { get; set; }
@@ -16,9 +16,7 @@ public class Course
     [Required]
     public int Credits { get; set; }
 
-    public Course() { }
-
-    public override string ToString() => $"Course ID: {CourseId}\t\t"
-                                         + $"Name: {Name}\t\t"
+    public override string ToString() => $"Course ID: {Id}\t\t"
+                                         + $"Name: {Name, -42}\t\t"
                                          + $"Number of Credits: {Credits}\t\t";
 }

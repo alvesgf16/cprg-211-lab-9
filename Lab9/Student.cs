@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
 using SQLite;
 
@@ -20,8 +20,8 @@ public class Student
 
     public Student() { }
 
-    public override string ToString() => $"Id: {Id}\t\t" +
-                                         $"Name: {Name}\t\t" +
-                                         $"Email: {Email}\t\t" +
+    public override string ToString() => $"Id: {Id, -2}\t\t" +
+                                         $"Name: {Name, -18}\t\t" +
+                                         $"Email: {Email, -21}\t\t" +
                                          $"Address: {Address}\t\t";
 }
