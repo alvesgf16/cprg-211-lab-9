@@ -102,7 +102,7 @@ internal class Program
         });
 
         List<Course> courses = courseManager.GetAll();
-        Console.WriteLine("Printing Courses");
+        Console.WriteLine("\nPrinting Courses");
         courses.ForEach(Console.WriteLine);
     }
 }
