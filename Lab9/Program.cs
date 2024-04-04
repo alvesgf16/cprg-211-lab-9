@@ -1,4 +1,4 @@
-using Lab9;
+﻿using Lab9;
 
 using SQLite;
 
@@ -187,5 +187,10 @@ internal class Program
         studentManager.AddCourseToStudent(studentToAddCourses, firstCourse);
         studentManager.AddCourseToStudent(studentToAddCourses, secondCourse);
         Console.WriteLine("Courses added to the student");
+
+        // Retrieving courses associated with a student
+        Console.WriteLine("\nRetrieving courses associated with a student...");
+        Console.WriteLine($"Courses associated with student {studentToAddCourses.Id} ({studentToAddCourses.Name}):");
+        studentManager.GetCoursesByStudentId(studentToAddCourses.Id);
     }
 }

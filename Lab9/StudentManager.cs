@@ -44,4 +44,15 @@ public class StudentManager
         };
         _database.Insert(databaseRecord);
     }
+
+    public void GetCoursesByStudentId(int studentId)
+    {
+        var query = from studentCourse in _database.Table<StudentCourse>()
+                    join course in _database.Table<Course>() on studentCourse.CourseId equals course.Id
+                    where studentCourse.StudentId == studentId
+                    select course;
+
+        List<Course> courses = query.ToList();
+        courses.ForEach(Console.WriteLine);
+    }
 }
