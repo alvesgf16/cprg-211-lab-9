@@ -178,5 +178,14 @@ internal class Program
         List<Course> courses = courseManager.GetAll();
         Console.WriteLine("\nPrinting Courses");
         courses.ForEach(Console.WriteLine);
+
+        // Adding courses to a student
+        Console.WriteLine("\nAdding courses to a student...");
+        Student studentToAddCourses = students[0];
+        Course firstCourse = courseManager.GetById("1001");
+        Course secondCourse = courseManager.GetById("1002");
+        studentManager.AddCourseToStudent(studentToAddCourses, firstCourse);
+        studentManager.AddCourseToStudent(studentToAddCourses, secondCourse);
+        Console.WriteLine("Courses added to the student");
     }
 }

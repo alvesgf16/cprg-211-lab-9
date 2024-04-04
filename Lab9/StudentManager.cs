@@ -33,4 +33,15 @@ public class StudentManager
 
     //update a student
     public void Update(Student student) => _database.Update(student);
+
+    public void AddCourseToStudent(Student student, Course course)
+    {
+        student.Courses.Add(course);
+        StudentCourse databaseRecord = new()
+        {
+            StudentId = student.Id,
+            CourseId = course.Id
+        };
+        _database.Insert(databaseRecord);
+    }
 }
