@@ -1,11 +1,85 @@
 using Lab9;
 
+using SQLite;
+
 internal class Program
 {
     private static void Main(string[] args)
     {
+        //reset database
+        SQLiteConnection database = new(Constants.DatabasePath);
+        database.DropTable<Student>();
+        database.DropTable<Course>();
+        database.DropTable<StudentCourse>();
+
         StudentManager studentManager = new();
         CourseManager courseManager = new();
+
+        // initial state of database
+        List<Student> initialStudents =
+        [
+            new Student()
+            {
+                    Name = "Jane",
+                    Email = "Jane@sait.ca",
+                    Address = "999 Main Str. Calgary"
+            },
+            new Student()
+            {
+                    Name = "John Doe",
+                    Email = "john@example.com",
+                    Address = "123 Main St"
+            },
+            new Student()
+            {
+                    Name = "Jane Smith",
+                    Email = "jane@example.com",
+                    Address = "456 Elm St"
+            },
+            new Student()
+            {
+                    Name = "Michael Johnson",
+                    Email = "michael@example.com",
+                    Address = "789 Oak St"
+            },
+            new Student()
+            {
+                    Name = "Emily Davis",
+                    Email = "emily@example.com",
+                    Address = "101 Pine St"
+            },
+            new Student()
+            {
+                    Name = "Christopher Wilson",
+                    Email = "chris@example.com",
+                    Address = "202 Maple St"
+            },
+            new Student()
+            {
+                    Name = "Jessica Brown",
+                    Email = "jessica.brown@sait.ca",
+                    Address = "123 SAIT Avenue"
+            },
+            new Student()
+            {
+                    Name = "Matthew Martinez",
+                    Email = "matthew@example.com",
+                    Address = "404 Walnut St"
+            },
+            new Student()
+            {
+                    Name = "Amanda Taylor",
+                    Email = "amanda@example.com",
+                    Address = "505 Birch St"
+            },
+            new Student()
+            {
+                    Name = "David Anderson",
+                    Email = "david@example.com",
+                    Address = "606 Spruce St"
+            },
+        ];
+        initialStudents.ForEach(studentManager.Add);
 
         List<Student> students = studentManager.GetAll();
         Console.WriteLine("Printing Students");
